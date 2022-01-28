@@ -33,7 +33,7 @@ The ASRs include:
 - Amazon (https://aws.amazon.com/transcribe/) - data found in `amazon_data` column
 - A version of Kaldi (https://kaldi-asr.org/) that contains alternative pronunciations in its language model - data found in the
 `kaldi_data` column
-- A version of Kaldi (https://kaldi-asr.org/) that only contains story text words in its language model - data found in the
+- A version of Kaldi that only contains story text words in its language model - data found in the
 `kaldina_data` column
 - wav2vec 2.0 (https://arxiv.org/abs/2006.11477) - transcripts found in the `wav2vec_transcript_words` column
 - A version of wav2vec 2.0 that transcribes a phoneme, rather than letter, sequence - transcripts found in the

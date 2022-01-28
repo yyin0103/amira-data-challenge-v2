@@ -7,7 +7,7 @@ Dear candidate:
 Thank you for accepting our data challenge! In this directory, you will find several files:
 
 - `labels.csv`
-- `asr_transcripts.csv`
+- `asr_data.csv`
 - `all_story_words.dic`
 - `arpabet_to_amirabet.json`
 
@@ -27,20 +27,21 @@ indicates the order of the words as they unfold across a phrase. The column `exp
 to which the label applies.
 
 
-2. The file `asr_transcripts.csv` contains transcriptions outputted by different automatic speech recognition (ASR) systems when
-we feed them audio from the student reading each phrase of each story. The ASRs include:
-- Amazon (https://aws.amazon.com/transcribe/) - transcripts found in `amazon_unaligned` column
-- A version of Kaldi (https://kaldi-asr.org/) that contains alternative pronunciations in its language model - transcripts found
-in `kaldi_unaligned` column
-- A version of Kaldi (https://kaldi-asr.org/) that only contains story text words in its language model - transcripts found in
-`kaldina_unaligned` column
-- wav2vec 2.0 (https://arxiv.org/abs/2006.11477) - transcripts found in the `wav2vec_unaligned` column
-- A version of wav2vec 2.0 that transcribes a phoneme, rather than letter, sequence - transcripts found in the `wav2vec_phonetic` column.
-NOTE: these phoneme transcripts use an alphabet called AMIRABET, *not* to be confused with the International Phonetic Alphabet (IPA; there
-is a lot of overlap in these two alphabets, but they are not the same).
+2. The file `asr_data.csv` contains transcriptions and, in some cases, confidence values and/or timing information outputted by
+different automatic speech recognition (ASR) systems when we feed them audio from the student reading each phrase of each story.
+The ASRs include:
+- Amazon (https://aws.amazon.com/transcribe/) - data found in `amazon_data` column
+- A version of Kaldi (https://kaldi-asr.org/) that contains alternative pronunciations in its language model - data found in the
+`kaldi_data` column
+- A version of Kaldi (https://kaldi-asr.org/) that only contains story text words in its language model - data found in the
+`kaldina_data` column
+- wav2vec 2.0 (https://arxiv.org/abs/2006.11477) - transcripts found in the `wav2vec_transcript_words` column
+- A version of wav2vec 2.0 that transcribes a phoneme, rather than letter, sequence - transcripts found in the
+`wav2vec_transcript_phonemes` column. NOTE: these phoneme transcripts use an alphabet called AMIRABET, *not* to be confused with
+the International Phonetic Alphabet (IPA; there is a lot of overlap in these two alphabets, but they are not the same).
 
-As in the labels file, `activityId` denotes the session and `phraseIndex` denotes the index of the phrase of the story that the transcriptions
-pertain to. The story text corresponding to the phrase can be found in `story_text`. 
+As in the labels file, `activityId` denotes the session and `phraseIndex` denotes the index of the phrase of the story that the
+transcriptions pertain to. The story text corresponding to the phrase can be found in `story_text`. 
 
 
 3. The file `all_story_words.dic` contains a dictionary mapping a huge number of words (inclusive of, but not limited to, all of the
@@ -58,11 +59,12 @@ Your task is to make meaningful steps towards creating an automated system that 
 Making a complete system like that is a daunting task; it is not doable in a few hours. We ask you to limit the work to a reasonable
 amount of time, and develop a piece of methodology that would demonstrably help in solving the problem. For example, you may choose
 to develop features that would be useful in training a supervised learning classifier for student errors. Or you may choose to focus
-on data preparation or finding useful patterns and insights in the data. You should feel free to pull in external, open-source data or
-resources if you believe they are helpful to solving the problem.
+on data preparation or finding useful patterns and insights in the data. You should not feel the need to use all of the data or
+features you are given. On the flip side, you should feel free to pull in external, open-source data or resources if you believe they
+are helpful in solving the problem.
 
-We would like to see how you work with a new and unfamiliar problem, and fairly complex data. We hope to see inventiveness, appropriate
-methodological sophistication, and fluency with relevant tools.
+We would like to see how you work with a new and unfamiliar problem, and fairly complex and noisy data. We hope to see inventiveness,
+appropriate methodological sophistication, and fluency with relevant tools.
 
 Please submit your code and report via email, or send a link to a new github repository (not this repository - otherwise other candidates
 may see your work). Please do not include the data in the repository. Please email your submission to ran.liu@amiralearning.com.

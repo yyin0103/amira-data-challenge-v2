@@ -21,7 +21,7 @@ Here are more details on the data.
 
 1. All of the human scoring data is located in `labels.csv`. Each unique session (`activityId`) involves one story being read.
 There is a label for each word of the story in each session. A label of 1 means the child read the word correctly, and a label
-of 2 means the child did not read the word correctly. Note that each story is broken down into phrases, denoted by
+of 0 means the child did not read the word correctly. Note that each story is broken down into phrases, denoted by
 `phraseIndex`. The order of the `phraseIndex` numbers indicates the ordering of the phrases in the story. The column `word_index`
 indicates the order of the words as they unfold across a phrase. The column `expected_text` indicates the target story word
 to which the label applies.

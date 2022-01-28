@@ -59,9 +59,9 @@ Your task is to make meaningful steps towards creating an automated system that 
 Making a complete system like that is a daunting task; it is not doable in a few hours. We ask you to limit the work to a reasonable
 amount of time, and develop a piece of methodology that would demonstrably help in solving the problem. For example, you may choose
 to develop features that would be useful in training a supervised learning classifier for student errors. Or you may choose to focus
-on data preparation or finding useful patterns and insights in the data. You should not feel the need to use all of the data or
-features you are given. On the flip side, you should feel free to pull in external, open-source data or resources if you believe they
-are helpful in solving the problem.
+on data preparation or finding useful patterns and insights in the data. You should not feel the need to use all of the data or features
+you are given (for example - you may choose not to consume all the ASRs). On the flip side, you should feel free to pull in external,
+open-source data or resources if you believe they are helpful in solving the problem.
 
 We would like to see how you work with a new and unfamiliar problem, and fairly complex and noisy data. We hope to see inventiveness,
 appropriate methodological sophistication, and fluency with relevant tools.

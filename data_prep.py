@@ -1,12 +1,14 @@
-from tqdm import tqdm
+import argparse
 
 import json
 import string
-# Path to the JSON file
-
-json_file_path = 'arpabet_to_amirabet.json'
+import pandas as pd
+from lexical import get_lexical_features
+from alignment import word_level_alignment, phoneme_level_alignment
+from tqdm import tqdm
 
 # import dictionaries
+json_file_path = 'arpabet_to_amirabet.json'
 with open(json_file_path, 'r') as file:
     arpabet_to_amirabet = json.load(file)
 
@@ -17,7 +19,6 @@ with open('all_story_words.dic', 'r') as file:
         word = parts[0]
         phonemes = parts[1:]
         word_to_arpabet[word] = phonemes
-
 
 
 remove_punct = str.maketrans('', '', string.punctuation)
@@ -110,9 +111,38 @@ def data_generation(df):
                     # lexical features
                     word_result[i].update(get_lexical_features(expected_text))
         except:
-            print(index, row['activityId'], row['phrase_index'])
+
+            # print(index, row['activityId'], row['phrase_index'])
+
             continue
 
         results.extend(list(word_result.values()))
 
     return results
+
+
+def main(args):
+
+    labels_df = pd.read_csv(args.label_path)
+    labels_df.expected_text = labels_df.expected_text\
+                      .apply(lambda x: x.translate(remove_punct).lower())
+    asr_data_df = pd.read_csv(args.asr_data_path)
+    
+    print("Data Preprocessing...")
+
+    processed_df = data_generation(asr_data_df)
+    processed_df = labels_df.merge(processed_df , on=['activityId', 'phraseIndex', 'word_index'])
+    processed_df.to_csv(args.save_path, index=False)
+
+    print("Processed dataset saved.")
+
+if __name__ == "__main__":
+
+    parser = argparse.ArgumentParser(description='Process some strings.')
+    parser.add_argument('--label_path', type=str, default="labels.csv",help='path to label dataset')
+    parser.add_argument('--asr_data_path', type=str, default="asr_data.csv", help='path to label dataset')
+    parser.add_argument('--save_path', type=str, default="processed_data.csv", help='path to save the processed dataset')
+    args = parser.parse_args()
+
+    # Call the main function with parsed arguments
+    main(args)

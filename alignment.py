@@ -3,9 +3,19 @@ import nltk
 from nltk.tokenize import word_tokenize
 import string
 
-nltk.download('punkt')
 
 def preprocess_text(sentence, level):
+
+    """
+    Preprocess and tokenize text for alignment task. Remove punctuation.
+
+    Args:
+      sentence: targeted text
+      level: level to split the text, ex. word, phoneme, character
+
+    Return:
+      list: tokenized text
+    """
     
     # Remove punctuation from each word, convert to lowercase and strip whitespace
     remove_punct = str.maketrans('', '', string.punctuation)
@@ -20,6 +30,19 @@ def preprocess_text(sentence, level):
 
 
 def word_level_alignment(reference_sentence, hypothesis_sentence):
+
+    """
+    Align ASR transcriptions with the reference text. Refer to Jiwer 
+    and use fuzz_dist.Levenshtein.editops for alignment. Each word in 
+    the transcription should be marked as Correct, Substituted, or Deleted.
+
+    Args:
+      reference_sentence
+      hypothesis_sentence
+
+    Return:
+      list[dict]: word-level features for each word in the reference sentence
+    """
 
     # Tokenize sentences into words
     ref_words = preprocess_text(reference_sentence, "word")
@@ -84,6 +107,21 @@ def word_level_alignment(reference_sentence, hypothesis_sentence):
 
 def phoneme_level_alignment(reference_sentence, hypothesis_sentence):
 
+    """
+    Align ASR transcriptions with the reference text. Refer to Jiwer 
+    and use fuzz_dist.Levenshtein.editops for alignment. Each character in 
+    the transcription is marked as Correct, Substituted, or Deleted.
+    Return correctness rate on the phoneme level for each word.
+
+    Args:
+      reference_sentence
+      hypothesis_sentence
+
+    Return:
+      list[dict]: phoneme-level features for each word in the reference sentence
+    """
+
+
     # Tokenize sentences into words
     ref_words = preprocess_text(reference_sentence, "phoneme")
     hyp_words = preprocess_text(hypothesis_sentence, "phoneme")
@@ -124,7 +162,6 @@ def phoneme_level_alignment(reference_sentence, hypothesis_sentence):
 
             for j in range(op.dest_start, op.dest_end):
 
-                # FOR ERROR CHECK
                 ref_phoneme = ref_phoneme + "*"
                 hypo_phoneme = hypo_phoneme + hyp_words[index]
                 status_sequence = status_sequence + "I"

@@ -1,7 +1,27 @@
-# amira-data-challenge-v2
-
 # Amira Data Challenge
 
+This repository includes the files and code used for the challenge. The files include:
+
+- `alignment.py`: Includes functions that align word-level and phoneme-level ground truth to three ASR results.
+- `data_prep.py`: Code to prepare the dataset for training.
+- `lexical.py`: Functions to extract word-level lexical features.
+- `model.py`: Includes a simple process of model experimentation with briefly generated data.
+- `result.txt`: Model results.
+  
+### Idea
+The code focuses on data preparation to binarily-detect students' errors. I concentrated on aligning transcriptions to corresponding sentences, referencing Jiwer's method to process errors, and considering some phonological and phonetic features at both word and phoneme levels to model training. I then fed the prepared data into several binary classification models. The best performance, based on an 80/20 split dataset, achieved an F1-score of 0.91 and ROC-AUC of 0.9052823725465227. However, there are further improvements that could enhance the model's performance.
+
+### Future Improvements
+- Model Development: Explore the implementation of a sequential model and more to enhance predictive capabilities.
+- Patterns Finding and Feature Generation: Further investigation is needed into the intricate relationships between errors, sounds, and linguistic patterns. This time, I didn't get to explore how inserted words in transcription could help us identify errors. Additionally, there is potential to introduce more phonetic-related features. Areas of interest include analyzing how students handle linguistic phenomena such as liaison, vowel reduction, intonation, and stop words.
+- Open Source Tools: Investigate and integrate more open-source tools to streamline and enhance the development process.
+
+### Reference
+End-to-End Automatic Pronunciation Error Detection Based on Improved Hybrid CTC/Attention Architecture (Zhang. et al, 2020)
+ASR Error Detection via Audio-Transcript entailment (Meripo et.al, 2022))
+
+
+### Challenge Instructions
 Dear candidate:
 
 Thank you for accepting our data challenge! In this directory, you will find several files:

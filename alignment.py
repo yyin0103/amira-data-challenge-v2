@@ -17,7 +17,6 @@ def preprocess_text(sentence, level):
       list: tokenized text
     """
     
-    # Remove punctuation from each word, convert to lowercase and strip whitespace
     remove_punct = str.maketrans('', '', string.punctuation)
     sentence = sentence.translate(remove_punct).lower()
 

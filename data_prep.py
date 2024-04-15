@@ -144,5 +144,4 @@ if __name__ == "__main__":
     parser.add_argument('--save_path', type=str, default="processed_data.csv", help='path to save the processed dataset')
     args = parser.parse_args()
 
-    # Call the main function with parsed arguments
     main(args)

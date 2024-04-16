@@ -17,9 +17,10 @@ The code focuses on data preparation to binarily-detect students' errors. I conc
 - Open Source Tools: Investigate and integrate more open-source tools to streamline and enhance the development process.
 
 ### Reference
-- End-to-End Automatic Pronunciation Error Detection Based on Improved Hybrid CTC/Attention Architecture (Zhang. et al, 2020)
-- ASR Error Detection via Audio-Transcript entailment (Meripo et.al, 2022)
-- https://github.com/tuanio/noisy-student-training-asr
+- [Pronunciation error detection model based on feature fusion (Zhu et al, 2024)](https://www.sciencedirect.com/science/article/pii/S0167639323001437?ssrnid=4470827&dgcid=SSRN_redirect_SD)
+- [End-to-End Automatic Pronunciation Error Detection Based on Improved Hybrid CTC/Attention Architecture (Zhang. et al, 2020)](https://github.com/tuanio/noisy-student-training-asr)
+- [ASR Error Detection via Audio-Transcript entailment (Meripo et al, 2022)](https://arxiv.org/pdf/2207.10849.pdf)
+
 
 
 ### Challenge Instructions
